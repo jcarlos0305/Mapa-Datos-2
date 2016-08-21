@@ -2,6 +2,7 @@ package proyecto.datos.pkg2;
 
  import java.util.ArrayList;
  import javax.swing.JOptionPane;
+import proyecto.datos.hash.TableHash;
  
  public class Nodo
  {
@@ -48,6 +49,7 @@ package proyecto.datos.pkg2;
  				enlacesExistentes++;
  			}
  		}
+                TableHash.getInstance().addValueAux(nombre, enlazar);
  	}
  
  	public int existeEnlace(String enlazar)
