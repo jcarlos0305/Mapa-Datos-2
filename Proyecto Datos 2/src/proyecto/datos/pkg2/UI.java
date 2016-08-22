@@ -18,35 +18,41 @@ public class UI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtHasta = new javax.swing.JTextField();
+        txtDesde = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtResultado = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setLocation(new java.awt.Point(0, 0));
         setMaximumSize(new java.awt.Dimension(831, 420));
         setMinimumSize(new java.awt.Dimension(831, 420));
         setResizable(false);
         getContentPane().setLayout(null);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(140, 320, 80, 20);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(20, 320, 70, 20);
+        getContentPane().add(txtHasta);
+        txtHasta.setBounds(140, 320, 80, 30);
+        getContentPane().add(txtDesde);
+        txtDesde.setBounds(20, 320, 70, 30);
 
         jButton1.setText("Ir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(240, 320, 41, 23);
+        jButton1.setBounds(240, 320, 41, 30);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setFocusable(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtResultado.setEditable(false);
+        txtResultado.setColumns(20);
+        txtResultado.setRows(5);
+        txtResultado.setFocusable(false);
+        jScrollPane1.setViewportView(txtResultado);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(370, 290, 440, 100);
@@ -64,7 +70,15 @@ public class UI extends javax.swing.JFrame {
         jLabel4.setBounds(140, 300, 50, 14);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        String resultado = gestor.dijkstra(Integer.parseInt(txtDesde.getText())-1,Integer.parseInt(txtHasta.getText())-1);
+        
+        txtResultado.setText(resultado);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,9 +121,9 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtDesde;
+    private javax.swing.JTextField txtHasta;
+    private javax.swing.JTextArea txtResultado;
     // End of variables declaration//GEN-END:variables
     Gestor gestor;
 }

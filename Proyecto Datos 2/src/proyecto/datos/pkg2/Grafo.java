@@ -1,76 +1,73 @@
 package proyecto.datos.pkg2;
 
- import java.util.HashMap;
- import java.util.ArrayList;
- 
- public class Grafo
- {
-    ArrayList <String>nombres;
-    ArrayList <Arco>aristas;
-    HashMap <String,Nodo> nodos;
+import java.util.HashMap;
+import java.util.ArrayList;
 
-    public Grafo()
-    {
-        nombres=new ArrayList<String>();
-        nodos=new HashMap <String,Nodo>();
-        aristas=new ArrayList <Arco>();
+public class Grafo {
+
+    ArrayList<String> nombres;
+    ArrayList<Arco> aristas;
+    HashMap<String, Nodo> nodos;
+
+    public Grafo() {
+        nombres = new ArrayList<String>();
+        nodos = new HashMap<String, Nodo>();
+        aristas = new ArrayList<Arco>();
     }
 
-    public void ingresarNodo(String nombre)
-    {
+    public void ingresarNodo(String nombre) {
         nombres.add(nombre);
-        nodos.put(nombre,new Nodo(nombre));
+        nodos.put(nombre, new Nodo(nombre));
     }
-    public void adicionarEnlace(String nodoInicial,String nodoTerminal,float peso)
-    {
-        Arco nuevo=new Arco(nodoInicial,nodoTerminal,peso);
-        int i=buscarIndice(nuevo.getPeso());
 
-        if(i==-1)
+    public void adicionarEnlace(String nodoInicial, String nodoTerminal, int peso) {
+        Arco nuevo = new Arco(nodoInicial, nodoTerminal, peso);
+        int i = buscarIndice(nuevo.getPeso());
+
+        if (i == -1) {
             aristas.add(nuevo);
-        else
-            aristas.add(i,nuevo);
+        } else {
+            aristas.add(i, nuevo);
+        }
 
-        nodos.get(nodoInicial).agregarEnlace(nodoTerminal,peso);
-        nodos.get(nodoTerminal).agregarEnlace(nodoInicial,peso);
+        nodos.get(nodoInicial).agregarEnlace(nodoTerminal, peso);
+        nodos.get(nodoTerminal).agregarEnlace(nodoInicial, peso);
     }
-    public boolean busarArista(Arco arco)
-    {
-        for(int i=0;i<aristas.size();i++)
-        {
-            Arco otro=aristas.get(i);
-            if(arco.getInicial().equals(otro.getInicial())&&arco.getTerminal().equals(otro.getTerminal())&&arco.getPeso()==otro.getPeso())
-            {
+
+    public boolean busarArista(Arco arco) {
+        for (int i = 0; i < aristas.size(); i++) {
+            Arco otro = aristas.get(i);
+            if (arco.getInicial().equals(otro.getInicial()) && arco.getTerminal().equals(otro.getTerminal()) && arco.getPeso() == otro.getPeso()) {
                 aristas.remove(otro);
                 return true;
             }
         }
         return false;
     }
-    public int buscarIndice(float peso)
-    {
-        for(int i=0;i<aristas.size();i++)
-        {
-            if(peso<aristas.get(i).getPeso())
+
+    public int buscarIndice(float peso) {
+        for (int i = 0; i < aristas.size(); i++) {
+            if (peso < aristas.get(i).getPeso()) {
                 return i;
+            }
         }
         return -1;
     }
-    public HashMap getNodos()
-    {
+
+    public HashMap getNodos() {
         return nodos;
     }
-    public void setNodos(HashMap<String,Nodo > muchos)
-    {
-        nodos=muchos;
+
+    public void setNodos(HashMap<String, Nodo> muchos) {
+        nodos = muchos;
     }
-    public ArrayList<String> getNombres()
-    {
+
+    public ArrayList<String> getNombres() {
         return nombres;
     }
-    public Nodo getNodo(String nombre)
-    {
-        return (Nodo)nodos.get(nombre);
+
+    public Nodo getNodo(String nombre) {
+        return (Nodo) nodos.get(nombre);
     }
 
     public ArrayList<Arco> getAristas() {
@@ -85,4 +82,4 @@ package proyecto.datos.pkg2;
         this.nombres = nombres;
     }
 
- }
+}
